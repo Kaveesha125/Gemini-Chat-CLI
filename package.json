@@ -1,0 +1,17 @@
+{
+  "name": "gemini_chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "chat.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google/genai": "^1.29.1",
+    "dotenv": "^17.2.3"
+  }
+}
