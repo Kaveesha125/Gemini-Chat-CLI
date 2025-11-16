@@ -33,7 +33,7 @@ if (!API_KEY) {
 }
 // --- END OF CHECK ---
 
-const MODEL_NAME = "gemini-2.5-flash";
+const MODEL_NAME = "gemini-2.5-flash-lite";
 const HISTORY_FILE = "chat_history.txt";
 // Saved in the project folder
 
