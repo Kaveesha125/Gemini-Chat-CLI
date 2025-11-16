@@ -69,7 +69,8 @@ npm run ai
 
 You can now start chatting with the AI.
 
-> [!TIP] > **Special Commands**
+> [!TIP]
+> > **Special Commands**
 >
 > You can use these commands inside the chat for more functionality:
 >
