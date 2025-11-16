@@ -8,8 +8,8 @@ npm install @google/genai
 npm install dotenv
 ```
 
-Run with 
+Run with
 
 ```
- node ai.js
+ npm run ai
 ```

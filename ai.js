@@ -66,8 +66,9 @@ const systemColors = {
   reset: "\x1b[0m",
   green: "\x1b[32m",
   yellow: "\x1b[33m", // User input prompt color
-  blue: "\x1b[34m", // Loader color
+  aquaBright: "\x1b[38;5;50m", // Loader color
   red: "\x1b[31m", // Error color
+  blue: "\x1b[34m", // For exit message
 };
 
 // --- Theme colors object (ONLY for AI response) ---
@@ -106,7 +107,7 @@ function startLoader() {
   loaderInterval = setInterval(() => {
     const frame = loaderFrames[(i = (i + 1) % loaderFrames.length)];
     process.stdout.write(
-      `\r${systemColors.blue}${loaderText} ${frame}${systemColors.reset}`
+      `\r${systemColors.aquaBright}${loaderText} ${frame}${systemColors.reset}`
     );
   }, 80);
 }
@@ -197,9 +198,12 @@ async function loadHistory(chat) {
       .filter((line) => line.trim() !== "");
 
     for (const message of history) {
+      // We just send the messages; the AI will follow the rule we set
       await chat.sendMessage({ message, stream: false });
     }
-    console.log(`(Loaded ${history.length} previous messages for context.)`);
+    if (history.length > 0) {
+      console.log(`(Loaded ${history.length} previous messages for context.)`);
+    }
   } catch (error) {
     // File likely doesn't exist, which is fine
   }
@@ -216,8 +220,24 @@ async function main() {
   console.log("Type 'exit', 'quit', or 'theme' to change AI color.");
 
   try {
-    const chat = ai.chats.create({ model: MODEL_NAME });
-    await loadHistory(chat);
+    // --- 💡 START OF FIX 💡 ---
+    // 1. Add generationConfig here as a backup
+    const chat = ai.chats.create({
+      model: MODEL_NAME,
+      generationConfig: {
+        responseMimeType: "text/plain",
+      },
+    });
+
+    // 2. Send the priming message *before* loading history
+    await chat.sendMessage({
+      stream: false, // We don't need to see the AI's "OK" response
+      message:
+        "You are a helpful assistant. From now on, all your responses MUST be in plain text. Do not use Markdown, bolding, code blocks, headers, lists, or any other formatting. Just send the raw, unformatted text.",
+    });
+    // --- 💡 END OF FIX 💡 ---
+
+    await loadHistory(chat); // Now load the history
 
     while (true) {
       const userInput = await rl.question(
@@ -226,10 +246,9 @@ async function main() {
       const cleanInput = userInput.trim();
       const cleanLower = cleanInput.toLowerCase();
 
-      // --- START: MODIFIED EXIT BLOCK ---
+      // --- START: MODIFIED EXIT BLOCK (Unchanged) ---
       if (cleanLower === "exit" || cleanLower === "quit") {
         try {
-          // This is the new line you requested:
           await fs.unlink(HISTORY_FILE);
           console.log("(Chat history cleared.)");
         } catch (err) {
@@ -261,6 +280,7 @@ async function main() {
         `${themeColors.aiResponse}🤖 AI: ${systemColors.reset}`
       );
 
+      // This part was already correct in your script (using chunk.text)
       for await (const chunk of responseStream) {
         const chunkText = chunk.text;
         process.stdout.write(
