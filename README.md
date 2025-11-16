@@ -35,7 +35,7 @@ A simple and colorful command-line chat application using Google's Gemini API, f
 Follow these steps to get the chat client up and running.
 
 > [!NOTE]
-> **Prerequisites**
+>> **Prerequisites**
 >
 > - You must have [Node.js](https://nodejs.org/) installed.
 > - You need a Google AI Studio API key. You can get one from [makersuite.google.com](https://makersuite.google.com/).
