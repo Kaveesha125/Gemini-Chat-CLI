@@ -233,7 +233,7 @@ async function main() {
     await chat.sendMessage({
       stream: false, // We don't need to see the AI's "OK" response
       message:
-        "You are a helpful assistant. From now on, all your responses MUST be in plain text. Do not use Markdown, bolding, code blocks, headers, lists, or any other formatting. Just send the raw, unformatted text.",
+        "You are a helpful assistant. From now on, all your responses MUST be in plain text. Do not use Markdown, bolding, code blocks, headers, lists, or any other formatting. Just send the raw, unformatted text.only use emojis if needed.",
     });
     // --- 💡 END OF FIX 💡 ---
 
