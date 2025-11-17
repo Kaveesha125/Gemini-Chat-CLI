@@ -217,7 +217,9 @@ async function main() {
   console.log(
     `${systemColors.green}🤖 JS Gemini Chat | Connected to ${MODEL_NAME}${systemColors.reset}`
   );
-  console.log("Type 'exit', 'quit', or 'theme' to change AI color.");
+  console.log(
+    "Type 'exit' or 'quit' to stop and clear chat history, 'theme' to change AI color, or Ctrl+C to stop without clearing."
+  );
 
   try {
     // --- 💡 START OF FIX 💡 ---
