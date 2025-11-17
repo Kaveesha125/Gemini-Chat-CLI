@@ -5,17 +5,7 @@ A simple and colorful command-line chat application using Google's Gemini API, f
 - [Features](#-features)
 - [Setup and Installation](#-setup-and-installation)
 - [Usage](#-usage)
-- [Contributing](#-contributing)
-
-<!--
-  TODO: Add a demo of the chat in action here.
-  You can record a short session and save it as a .webp or .gif file.
-
-  Example:
-  <p align="center">
-    <img src="https://path/to/your/demo.webp" alt="Gemini Chat Demo" width="80%">
-  </p>
--->
+- [Demo](#-demo)
 
 ## ✨ Features
 
@@ -24,16 +14,6 @@ A simple and colorful command-line chat application using Google's Gemini API, f
 - **Customizable Themes**: Personalize your chat interface by changing the AI's response color.
 - **Session Context**: The chat remembers the conversation history during a session to provide better context.
 - **Thinking Indicator**: A subtle loader indicates when the AI is processing your request.
-
-<!--
-  TODO: Add a demo of the theme customization feature.
-  This is a great place to show off the color options!
-
-  Example:
-  <p align="center">
-    <img src="https://path/to/your/theme-demo.webp" alt="Theme Customization Demo" width="80%">
-  </p>
--->
 
 ## 🚀 Setup and Installation
 
@@ -108,6 +88,25 @@ You can now start chatting with the AI.
 > - **`theme`**: Opens the theme selection menu. Pick a specific color for the AI's responses or choose a random one. Your selection is saved for future sessions!
 > - **`exit`** or **`quit`**: Ends the chat session and clears the session history.
 > - **`Ctrl + C`**: Exit the application without clearing session history.
+
+## 📺 Demo
+
+<img src="" width="650">
+
+<table>
+  <tr>
+    <th align="center">Tutorial</th>
+    <th align="center">Themes</th>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="" />
+    </td>
+    <td align="center">
+      <img src=""/>
+    </td>
+  </tr>
+</table>
 
 ## 🤝 Contributing
 
