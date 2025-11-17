@@ -91,22 +91,21 @@ You can now start chatting with the AI.
 
 ## 📺 Demo
 
-<img src="" width="650">
+![Tutorial](demo.webp)
 
-<table>
+<!-- <table>
   <tr>
     <th align="center">Tutorial</th>
     <th align="center">Themes</th>
   </tr>
   <tr>
     <td align="center">
-      <img src="" />
     </td>
     <td align="center">
       <img src=""/>
     </td>
   </tr>
-</table>
+</table> -->
 
 ## 🤝 Contributing
 
