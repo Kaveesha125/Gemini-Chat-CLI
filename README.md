@@ -2,6 +2,11 @@
 
 A simple and colorful command-line chat application using Google's Gemini API, featuring customizable themes.
 
+- [Features](#-features)
+- [Setup and Installation](#-setup-and-installation)
+- [Usage](#-usage)
+- [Contributing](#-contributing)
+
 <!--
   TODO: Add a demo of the chat in action here.
   You can record a short session and save it as a .webp or .gif file.
@@ -102,7 +107,7 @@ You can now start chatting with the AI.
 >
 > - **`theme`**: Opens the theme selection menu. Pick a specific color for the AI's responses or choose a random one. Your selection is saved for future sessions!
 > - **`exit`** or **`quit`**: Ends the chat session and clears the session history.
-> - **`Ctrl + C`**: Exit the application without clearing sessionhistory.
+> - **`Ctrl + C`**: Exit the application without clearing session history.
 
 ## 🤝 Contributing
 
