@@ -2,7 +2,7 @@
   "name": "gemini_chat",
   "version": "1.0.0",
   "description": "",
-  "main": "chat.js",
+  "main": "ai.js",
   "type": "module",
   "scripts": {
     "ai": "node ai.js",

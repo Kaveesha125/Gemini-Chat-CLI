@@ -35,27 +35,52 @@ A simple and colorful command-line chat application using Google's Gemini API, f
 Follow these steps to get the chat client up and running.
 
 > [!NOTE]
->> **Prerequisites**
+>
+> > **Prerequisites**
 >
 > - You must have [Node.js](https://nodejs.org/) installed.
-> - You need a Google AI Studio API key. You can get one from [makersuite.google.com](https://makersuite.google.com/).
+> - You need a Google AI Studio API key. You can get one from [Google Ai Studio](https://makersuite.google.com/).
 
-### 1. Install Dependencies
+### 1. Clone the Repository
 
-First, clone the repository and navigate into the directory. Then, run the following command to install the necessary packages:
+Clone the repository to your local machine:
 
 ```bash
-npm install @google/genai dotenv
+git clone https://github.com/Kaveesha125/Gemini-Chat-CLI.git
 ```
 
-### 2. Configure API Key
+### 2. Navigate to the Directory
 
-> [!IMPORTANT]
-> Create a file named `.env` in the project's root directory. This file is essential for storing your API key securely. Add your key to this file as shown below, replacing `"YOUR_API_KEY_HERE"` with your actual key.
->
-> ```
-> GEMINI_API_KEY="YOUR_API_KEY_HERE"
-> ```
+Change into the newly created directory:
+
+```bash
+cd Gemini-Chat-CLI
+```
+
+### 3. Install Dependencies
+
+Install the necessary packages using npm:
+
+```bash
+npm install
+```
+
+### 4. Configure API Key
+
+The application requires a Google AI API Key to function. The repository includes an example file to help you set it up.
+
+First, create a `.env` file by copying the example:
+
+```bash
+cp .env.example .env
+```
+
+Next, open the newly created `.env` file with a text editor and replace `YOUR_API_KEY_GOES_HERE` with your actual key.
+
+```
+# Your Google API Key for Gemini
+GEMINI_API_KEY="Your_Google_AI_API_Key_Here"
+```
 
 The application is now configured and ready to use!
 
@@ -70,12 +95,14 @@ npm run ai
 You can now start chatting with the AI.
 
 > [!TIP]
+>
 > > **Special Commands**
 >
 > You can use these commands inside the chat for more functionality:
 >
 > - **`theme`**: Opens the theme selection menu. Pick a specific color for the AI's responses or choose a random one. Your selection is saved for future sessions!
 > - **`exit`** or **`quit`**: Ends the chat session and clears the session history.
+> - **`Ctrl + C`**: Exit the application without clearing sessionhistory.
 
 ## 🤝 Contributing
 
