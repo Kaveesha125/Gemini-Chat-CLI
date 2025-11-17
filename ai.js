@@ -80,7 +80,7 @@ let themeColors = {
 const API_KEY = process.env.GEMINI_API_KEY;
 if (!API_KEY) {
   console.error(
-    `${systemColors.red}❌ ERROR: 'GEMINI_API_KEY' not found.${systemColors.reset}`
+    `${systemColors.red}ERROR: 'GEMINI_API_KEY' not found.${systemColors.reset}`
   );
   console.error(
     "Please check your .env file in this directory and make sure it contains:"
@@ -98,7 +98,18 @@ const rl = readline.createInterface({ input, output });
 
 // --- Loader Functionality (Unchanged) ---
 let loaderInterval = null;
-const loaderFrames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"];
+const loaderFrames = [
+  "\u280B",
+  "\u2819",
+  "\u2839",
+  "\u2838",
+  "\u283C",
+  "\u2834",
+  "\u2826",
+  "\u2827",
+  "\u2807",
+  "\u280F",
+];
 const loaderText = "AI is thinking";
 
 function startLoader() {
