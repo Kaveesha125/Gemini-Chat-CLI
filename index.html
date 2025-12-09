@@ -1,66 +1,294 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gemini Chat CLI</title>
+    <title>Gemini Chat CLI | Documentation</title>
     <style>
+      /* Variables for Light/Dark Mode */
+      :root {
+        --bg: #ffffff;
+        --text: #24292f;
+        --border: #d0d7de;
+        --code-bg: #f6f8fa;
+        --header-bg: #f6f8fa;
+        --accent: #0969da;
+      }
+
+      [data-theme="dark"] {
+        --bg: #0d1117;
+        --text: #c9d1d9;
+        --border: #30363d;
+        --code-bg: #161b22;
+        --header-bg: #010409;
+        --accent: #58a6ff;
+      }
+
       body {
-        background-color: #0d1117;
-        color: #c9d1d9;
-        font-family: monospace;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+          Arial, sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
         margin: 0;
+        line-height: 1.6;
+        transition: background-color 0.3s, color 0.3s;
       }
-      .container {
-        max-width: 600px;
-        padding: 20px;
-        border: 1px solid #30363d;
-        border-radius: 6px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+      /* Header */
+      header {
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: var(--bg);
       }
-      h1 {
-        color: #58a6ff;
-      }
-      code {
-        background: #161b22;
-        padding: 2px 6px;
-        border-radius: 4px;
-        color: #79c0ff;
-      }
-      .btn {
-        display: inline-block;
-        margin-top: 20px;
-        padding: 10px 20px;
-        background: #238636;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
+
+      .brand {
         font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      /* GitHub Link */
+      .gh-link {
+        color: var(--text);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.9rem;
+      }
+      .gh-link:hover {
+        color: var(--accent);
+      }
+      .gh-link svg {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+      }
+
+      /* Toggle Button */
+      .theme-btn {
+        background: none;
+        border: 1px solid var(--border);
+        color: var(--text);
+        padding: 5px 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+      .theme-btn:hover {
+        background-color: var(--code-bg);
+      }
+
+      /* Main Content */
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      h1 {
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+      }
+      h2 {
+        margin-top: 40px;
+        margin-bottom: 15px;
+      }
+      p {
+        margin-bottom: 15px;
+      }
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      /* Image */
+      .demo-img {
+        max-width: 100%;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        margin: 20px 0;
+        display: block;
+      }
+
+      /* Code Blocks */
+      .code-block {
+        background-color: var(--code-bg);
+        border: 1px solid var(--border);
+        padding: 15px;
+        border-radius: 6px;
+        font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
+          monospace;
+        font-size: 0.9rem;
+        overflow-x: auto;
+        position: relative;
+        margin-bottom: 20px;
+      }
+
+      .copy-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        color: var(--text);
+        border-radius: 4px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        padding: 2px 8px;
+      }
+      .copy-btn:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      footer {
+        text-align: center;
+        padding: 40px;
+        border-top: 1px solid var(--border);
+        font-size: 0.9rem;
+        color: var(--text);
+        opacity: 0.8;
+        margin-top: 50px;
       }
     </style>
   </head>
   <body>
+    <header>
+      <div class="brand">Gemini-Chat-CLI</div>
+      <div class="nav-right">
+        <a
+          href="https://github.com/Kaveesha125/Gemini-Chat-CLI"
+          class="gh-link"
+          target="_blank"
+        >
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+            />
+          </svg>
+          GitHub
+        </a>
+        <button class="theme-btn" id="themeToggle" title="Toggle Theme">
+          ☀️
+        </button>
+      </div>
+    </header>
+
     <div class="container">
-      <h1>Gemini-Chat-CLI 🤖</h1>
-      <p>A cross-platform Node.js terminal client for Google Gemini.</p>
+      <h1>Gemini Chat CLI</h1>
+      <p>
+        A cross-platform Node.js terminal client for Google Gemini. Features
+        streaming responses, customizable ANSI color themes, and persistent chat
+        history.
+      </p>
+
       <img
         src="https://raw.githubusercontent.com/Kaveesha125/Gemini-Chat-CLI/main/demo.webp"
-        alt="App Demo"
-        style="max-width: 100%; border-radius: 5px; margin: 10px 0"
+        alt="CLI Demo"
+        class="demo-img"
       />
-      <p>To install, open your terminal and run:</p>
-      <p>
+
+      <h2>Features</h2>
+      <ul>
+        <li>
+          <strong>Streaming Responses:</strong> Real-time token generation.
+        </li>
+        <li><strong>Themes:</strong> Customizable colors via CLI commands.</li>
+        <li>
+          <strong>Cross-Platform:</strong> Works on Windows, Linux, macOS,
+          Android (Termux).
+        </li>
+      </ul>
+
+      <h2>Installation</h2>
+
+      <p>1. Clone the repository:</p>
+      <div class="code-block">
         <code
           >git clone https://github.com/Kaveesha125/Gemini-Chat-CLI.git</code
         >
-      </p>
-      <a href="https://github.com/Kaveesha125/Gemini-Chat-CLI" class="btn"
-        >View on GitHub</a
-      >
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+
+      <p>2. Change directory:</p>
+      <div class="code-block">
+        <code>cd Gemini-Chat-CLI</code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+
+      <p>3. Install dependencies:</p>
+      <div class="code-block">
+        <code>npm install</code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+
+      <p>4. Create <code>.env</code> file:</p>
+      <div class="code-block">
+        <code>cp .env.example .env</code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+
+      <h2>Usage</h2>
+      <div class="code-block">
+        <code>npm run ai</code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
     </div>
+
+    <footer>
+      <p>
+        ©
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        Kaveesha125. Open Source under MIT License.
+      </p>
+    </footer>
+
+    <script>
+      // Copy functionality
+      function copyCode(btn) {
+        const code = btn.previousElementSibling.innerText;
+        navigator.clipboard.writeText(code);
+        const original = btn.innerText;
+        btn.innerText = "✓";
+        setTimeout(() => (btn.innerText = original), 2000);
+      }
+
+      // Theme Toggle Logic
+      const toggleBtn = document.getElementById("themeToggle");
+      const html = document.documentElement;
+
+      // Check saved theme or default to dark
+      const savedTheme = localStorage.getItem("theme") || "light";
+      html.setAttribute("data-theme", savedTheme);
+      updateIcon(savedTheme);
+
+      toggleBtn.addEventListener("click", () => {
+        const currentTheme = html.getAttribute("data-theme");
+        const newTheme = currentTheme === "light" ? "dark" : "light";
+
+        html.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+        updateIcon(newTheme);
+      });
+
+      function updateIcon(theme) {
+        toggleBtn.innerText = theme === "light" ? "🌙" : "☀️";
+      }
+    </script>
   </body>
 </html>
